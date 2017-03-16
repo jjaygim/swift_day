@@ -9,12 +9,13 @@
 import Foundation
 
 class FileMatcher {
+    let fileManager = FileManager()
     func allFiles(atPath: String) throws -> [String] {
         let files = try FileManager.default.contentsOfDirectory(atPath: atPath)
         return files
     }
     func isExist(filename: String, atPath: String) -> Bool {
-        let exist = FileManager.default.fileExists(atPath: atPath+"/"+filename)
+        let exist = fileManager.fileExists(atPath: atPath+"/"+filename)
         return exist
     }
 }
