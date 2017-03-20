@@ -82,6 +82,8 @@ class ViewController: UIViewController {
         myMachine.add(coke)
         print(myMachine.getAllStocks())
         print(coke.getBrand(), myMachine.countBeverage(coke.getBrand()))
+        myMachine.add2(coke)
+        print(myMachine.getStockDict())
     }
     
     @IBAction func addAppleJuiceButton(_ sender: Any) {
