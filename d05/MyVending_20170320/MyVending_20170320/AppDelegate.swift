@@ -17,6 +17,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let ud = UserDefaults.standard
     var save = UserDefaults.standard.dictionary(forKey: "stock")
 
+//    func application(_ application: UIApplication, willFinishLanchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+//        return false
+//    }
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         //let vc = self.window?.rootViewController as! ViewController

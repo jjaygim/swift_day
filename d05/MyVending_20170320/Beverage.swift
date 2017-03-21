@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Beverage {
+class Beverage: Equatable {
     var ice: Bool
     //var kindArr: Array<String>
     var company: String
@@ -25,6 +25,15 @@ class Beverage {
         price = Int()
         brand = String()
         expiry = Date()
+    }
+    
+    static func == (lhs: Beverage , rhs: Beverage) -> Bool {
+        return
+            lhs.getBrand() == rhs.getBrand() &&
+            lhs.getCapacity() == rhs.getCapacity() &&
+            lhs.getCompany() == rhs.getCompany() &&
+            lhs.getExpiry() == rhs.getExpiry() &&
+            lhs.getPrice() == rhs.getPrice()
     }
     
     func getCompany() -> String {

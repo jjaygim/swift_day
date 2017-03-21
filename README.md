@@ -2,10 +2,14 @@
 20170315: D2 / P1-1 CXPen, P1-2 PenHolder  
 20170316: D2 / P2 FileMatcher, add 1-1 CXMonamiPen, add 1-2  
 20170317: D4 / Multi-Touches, D1, D2 updated  
-	  D3 / P2-1 Date & Time (1~5)
+	      D3 / P2-1 Date & Time (1~5)
 20170318: D3 / P2-2 VendingMachine (Beverage Class Only)  
-20170320: D5 / NSUserDefault (UserDefault.standard), NotificationCenter (The sink doesn't fit)  
+20170320: D5 / NSUserDefault (UserDefault.standard), NotificationCenter (The sync doesn't fit)  
 20170321: D5 / VendingMachine Class Updated  
+          D5 / NotificationCenter (DispatchQueue.main.async)  
+          D6 / Protocol, Extension  
+
+
 
 
 

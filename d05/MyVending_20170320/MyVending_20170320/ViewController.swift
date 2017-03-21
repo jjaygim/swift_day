@@ -50,19 +50,31 @@ class ViewController: UIViewController {
         milkTeaQuantityLabel.text = String(myMachine.countBeverage(milkTea.getBrand()))
         
         NotificationCenter.default.addObserver(self, selector: #selector(reloadList), name: NSNotification.Name(rawValue: "reload"), object: nil)
+        
+        print(iceAmericano == americano)
         //print(myMachine.getAllStocks())
         
         // Do any additional setup after loading the view, typically from a nib.
     }
     
+//    func test() {
+//        if coke == milkTea {
+//            print("같다")
+//        }
+//        else {
+//            print("다르다")
+//        }
+//    }
+    
     func reloadList() {
-        
-        cokeQuantityLabel.text = String(myMachine.countBeverage(coke.getBrand()))
-        appleJuiceQuantityLabel.text = String(myMachine.countBeverage(appleJuice.getBrand()))
-        iceAmericanoQuantityLabel.text = String(myMachine.countBeverage(iceAmericano.getBrand()))
-        peppermintQuantityLabel.text = String(myMachine.countBeverage(peppermint.getBrand()))
-        americanoQuantityLabel.text = String(myMachine.countBeverage(americano.getBrand()))
-        milkTeaQuantityLabel.text = String(myMachine.countBeverage(milkTea.getBrand()))
+        DispatchQueue.main.async {
+            self.cokeQuantityLabel.text = String(self.myMachine.countBeverage(self.coke.getBrand()))
+            self.appleJuiceQuantityLabel.text = String(self.myMachine.countBeverage(self.appleJuice.getBrand()))
+            self.iceAmericanoQuantityLabel.text = String(self.myMachine.countBeverage(self.iceAmericano.getBrand()))
+            self.peppermintQuantityLabel.text = String(self.myMachine.countBeverage(self.peppermint.getBrand()))
+            self.americanoQuantityLabel.text = String(self.myMachine.countBeverage(self.americano.getBrand()))
+            self.milkTeaQuantityLabel.text = String(self.myMachine.countBeverage(self.milkTea.getBrand()))
+        }
         /*
         self.cokeQuantityLabel.reloadInputViews()
         self.appleJuiceQuantityLabel.reloadInputViews()

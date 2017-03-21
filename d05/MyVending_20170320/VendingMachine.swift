@@ -98,7 +98,10 @@ class VendingMachine {
     
     func add(_ beverage: Beverage) {
         stocks.append(beverage)
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "reload"), object: nil)
+        //NotificationCenter.default.post(name: NSNotification.Name(rawValue: "reload"), object: nil)
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "reload"), object: nil, userInfo: getAllStocks())
+
+        //디폴트는 싱글톤
     }
     
     func getNamesOfStocks() -> [String] {
