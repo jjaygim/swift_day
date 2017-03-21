@@ -5,21 +5,16 @@ import UIKit
 extension String {
     func filterHangulWord() -> Array<String> {
         //(Array(cafe.characters))
-        let chaArr = Array(self.characters)
-        var strArr = [String]()
+        var strArr =  Array(self.characters).map{ String($0) }
 
         var korArr = [String]()
         var temp = ""
-        
-        for i in chaArr {
-            strArr.append(String(i))
-        }
 
         for i in 0..<strArr.count {
             
-            if strArr[i].unicodeScalars >= "ㄱ".unicodeScalars.first! || strArr[i] >= "힣".unicodeScalars.first! {
+            if strArr[i].unicodeScalars.first! >= "ㄱ".unicodeScalars.first! || strArr[i].unicodeScalars.first! >= "힣".unicodeScalars.first! {
                 temp += strArr[i]
-                if !(strArr[i+1].unicodeScalars >= "ㄱ".unicodeScalars.first! || strArr[i+1] >= "힣".unicodeScalars.first!) {
+                if !(strArr[i+1].unicodeScalars.first! >= "ㄱ".unicodeScalars.first! || strArr[i+1].unicodeScalars.first! >= "힣".unicodeScalars.first!) {
                     korArr.append(temp)
                     temp = ""
                 }
@@ -28,7 +23,6 @@ extension String {
         return korArr
     }
 }
-
 
 let word = "http://www.osxdev.org/forum/index.php?threads/swift-2-0에서-try-catch로-fatal- error-잡을-수-있나요.382/"
 let link = "http://www.osxdev.org/forum/index.php?threads/swift-2-0에서 try catch로-fatal- error-잡을-수-있나요.382/"
@@ -59,10 +53,13 @@ extension String {
     }
 }
 
+print(word.filterHangulWord())
+print(link.filterHangulWord())
+
 print(word.filterKoreanWord())
 print(link.filterKoreanWord())
 
-//print(link.filterHangulWord())
+
 
 
 
