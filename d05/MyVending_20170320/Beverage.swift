@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Beverage: Equatable {
+class Beverage: NSObject {
     var ice: Bool
     //var kindArr: Array<String>
     var company: String
@@ -52,19 +52,19 @@ class Beverage: Equatable {
         return expiry
     }
     
-    func setCompany(_ 제조사: String) {
+    func setedCompany(_ 제조사: String) {
         company = 제조사
     }
-    func setCapacity(_ 용량: Int) {
+    func setedCapacity(_ 용량: Int) {
         capacity = 용량
     }
-    func setPrice(_ 가격: Int) {
+    func setedPrice(_ 가격: Int) {
         price = 가격
     }
-    func setBrand(_ 이름: String) {
+    func setedBrand(_ 이름: String) {
         brand = 이름
     }
-    func setExpiry(_ 유통기한: Date) {
+    func setedExpiry(_ 유통기한: Date) {
         expiry = 유통기한
     }
 }
@@ -79,7 +79,7 @@ class ColdBeverage: Beverage {
         super.init(withIce: true)
     }
     
-    override func setPrice(_ 가격: Int) {
+    override func setedPrice(_ 가격: Int) {
         price = 가격 + addPrice
     }
 }
@@ -87,34 +87,39 @@ class ColdBeverage: Beverage {
 class SparklingColdBeverage: ColdBeverage {
     init() {
         super.init(kindOf: "SPARKLING")
-        setBrand("Coke")
-        setPrice(800)
-        setCompany("Cocacola")
-        setExpiry(Date(timeInterval: 30000, since: Date()))
+        setedBrand("Coke")
+        setedPrice(800)
+        setedCompany("Cocacola")
+        setedExpiry(Date(timeInterval: 30000, since: Date()))
     }
+
+
 }
 
 class JuiceColdBerverage: ColdBeverage {
     init() {
         super.init(kindOf: "JUICE")
-        setBrand("Applejuice")
-        setPrice(2000)
-        setCompany("Gold Medal")
-        setExpiry(Date(timeInterval: 10000, since: Date()))
+        setedBrand("Applejuice")
+        setedPrice(2000)
+        setedCompany("Gold Medal")
+        setedExpiry(Date(timeInterval: 10000, since: Date()))
     }
+
 }
 
 class CoffeeColdBeverage: ColdBeverage {
     init() {
         super.init(kindOf: "COFFEE")
-        setBrand("Americano")
-        setPrice(1000)
-        setCompany("Coffe Bean")
-        setExpiry(Date(timeInterval: 20000, since: Date()))
+        setedBrand("Americano")
+        setedPrice(1000)
+        setedCompany("Coffe Bean")
+        setedExpiry(Date(timeInterval: 20000, since: Date()))
     }
-    override func setBrand(_ 이름: String) {
+
+    override func setedBrand(_ 이름: String) {
         brand = "ICE " + 이름
     }
+    
 }
 
 class HotBeverage: Beverage {
@@ -129,31 +134,34 @@ class HotBeverage: Beverage {
 class TeaHotBeverage: HotBeverage {
     init() {
         super.init(kindOf: "TEA")
-        setBrand("Peppermint")
-        setPrice(1200)
-        setCompany("Lipton")
-        setExpiry(Date(timeInterval: 15000, since: Date()))
+        setedBrand("Peppermint")
+        setedPrice(1200)
+        setedCompany("Lipton")
+        setedExpiry(Date(timeInterval: 15000, since: Date()))
     }
+
 }
 
-class CoffeeHotBeverage: HotBeverage {
+class CoffeeHotBeverage: HotBeverage{
     init() {
         super.init(kindOf: "COFFEE")
-        setBrand("Americano")
-        setPrice(1000)
-        setCompany("Coffe Bean")
-        setExpiry(Date(timeInterval: 20000, since: Date()))
+        setedBrand("Americano")
+        setedPrice(1000)
+        setedCompany("Coffe Bean")
+        setedExpiry(Date(timeInterval: 20000, since: Date()))
     }
+
 }
 
-class MilkHotBeverage: HotBeverage {
+class MilkHotBeverage: HotBeverage{
     init() {
         super.init(kindOf: "MILK")
-        setBrand("Milktea")
-        setPrice(1500)
-        setCompany("Gongcha")
-        setExpiry(Date(timeInterval: 5000, since: Date()))
+        setedBrand("Milktea")
+        setedPrice(1500)
+        setedCompany("Gongcha")
+        setedExpiry(Date(timeInterval: 5000, since: Date()))
     }
+
 }
 
 

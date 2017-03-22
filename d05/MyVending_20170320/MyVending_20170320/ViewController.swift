@@ -50,9 +50,11 @@ class ViewController: UIViewController {
         milkTeaQuantityLabel.text = String(myMachine.countBeverage(milkTea.getBrand()))
         
         NotificationCenter.default.addObserver(self, selector: #selector(reloadList), name: NSNotification.Name(rawValue: "reload"), object: nil)
+        let saveLabel = Notification(name: Notification.Name("stock"), object: nil, userInfo: myMachine.getAllStocks())
+        reloadList(notification: saveLabel)
         
-        print(iceAmericano == americano)
-        //print(myMachine.getAllStocks())
+        //print(iceAmericano == americano)
+        //print("뷰디드로드 겟올스탁:", myMachine.getAllStocks())
         
         // Do any additional setup after loading the view, typically from a nib.
     }
@@ -66,14 +68,36 @@ class ViewController: UIViewController {
 //        }
 //    }
     
-    func reloadList() {
+    func reloadList(notification: Notification) {
+        let stocks = notification.userInfo!
         DispatchQueue.main.async {
+            if let coke = stocks["Coke"] {
+            self.cokeQuantityLabel.text = String(describing: coke)
+            }
+            if let apple = stocks["Applejuice"] {
+                self.appleJuiceQuantityLabel.text = String(describing: apple)
+            }
+            if let iceAme = stocks["ICE Americano"] {
+                self.iceAmericanoQuantityLabel.text = String(describing: iceAme)
+            }
+            if let pepper = stocks["Peppermint"] {
+                self.peppermintQuantityLabel.text = String(describing: pepper)
+            }
+            if let ame = stocks["Americano"] {
+                self.americanoQuantityLabel.text = String(describing: ame)
+            }
+            if let milk = stocks["Milktea"] {
+                self.milkTeaQuantityLabel.text = String(describing: milk)
+            }
+            
+            /*
             self.cokeQuantityLabel.text = String(self.myMachine.countBeverage(self.coke.getBrand()))
             self.appleJuiceQuantityLabel.text = String(self.myMachine.countBeverage(self.appleJuice.getBrand()))
             self.iceAmericanoQuantityLabel.text = String(self.myMachine.countBeverage(self.iceAmericano.getBrand()))
             self.peppermintQuantityLabel.text = String(self.myMachine.countBeverage(self.peppermint.getBrand()))
             self.americanoQuantityLabel.text = String(self.myMachine.countBeverage(self.americano.getBrand()))
             self.milkTeaQuantityLabel.text = String(self.myMachine.countBeverage(self.milkTea.getBrand()))
+            */
         }
         /*
         self.cokeQuantityLabel.reloadInputViews()
@@ -82,8 +106,21 @@ class ViewController: UIViewController {
         self.peppermintQuantityLabel.reloadInputViews()
         self.americanoQuantityLabel.reloadInputViews()
         self.milkTeaQuantityLabel.reloadInputViews()
- */
+         */
     }
+    
+    //func getStocks() -> [String: Int] {
+      //  return myMachine.getStockDict()
+    //}
+    
+    func saveDataIn(){
+        myMachine.saveData()
+    }
+    
+    func loadDataIn(){
+        myMachine.loadDate()
+    }
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -91,41 +128,39 @@ class ViewController: UIViewController {
     }
     
     @IBAction func addCokeButton(_ sender: Any) {
-        myMachine.add(coke)
-        print(myMachine.getAllStocks())
-        print(coke.getBrand(), myMachine.countBeverage(coke.getBrand()))
-        myMachine.add2(coke)
-        print(myMachine.getStockDict())
+        myMachine.setBeverage(coke)
+        //print(myMachine.getAllStocks())
+        //print(coke.getBrand(), myMachine.countBeverage(coke.getBrand()))
     }
     
     @IBAction func addAppleJuiceButton(_ sender: Any) {
-        myMachine.add(appleJuice)
-        print(myMachine.getAllStocks())
-        print(appleJuice.getBrand(), myMachine.countBeverage(appleJuice.getBrand()))
+        myMachine.setBeverage(appleJuice)
+        //print(myMachine.getAllStocks())
+        //print(appleJuice.getBrand(), myMachine.countBeverage(appleJuice.getBrand()))
     }
     
     @IBAction func addIceAmericanoButton(_ sender: Any) {
-        myMachine.add(iceAmericano)
-        print(myMachine.getAllStocks())
-        print(iceAmericano.getBrand(), myMachine.countBeverage(iceAmericano.getBrand()))
+        myMachine.setBeverage(iceAmericano)
+        //print(myMachine.getAllStocks())
+        //print(iceAmericano.getBrand(), myMachine.countBeverage(iceAmericano.getBrand()))
     }
 
     @IBAction func addPeppermintButton(_ sender: Any) {
-        myMachine.add(peppermint)
-        print(myMachine.getAllStocks())
-        print(peppermint.getBrand(), myMachine.countBeverage(peppermint.getBrand()))
+        myMachine.setBeverage(peppermint)
+        //print(myMachine.getAllStocks())
+        //print(peppermint.getBrand(), myMachine.countBeverage(peppermint.getBrand()))
     }
     
     @IBAction func addAmericanoButton(_ sender: Any) {
-        myMachine.add(americano)
-        print(myMachine.getAllStocks())
-        print(americano.getBrand(), myMachine.countBeverage(americano.getBrand()))
+        myMachine.setBeverage(americano)
+        //print(myMachine.getAllStocks())
+        //print(americano.getBrand(), myMachine.countBeverage(americano.getBrand()))
     }
     
     @IBAction func addMilkTeaButton(_ sender: Any) {
-        myMachine.add(milkTea)
-        print(myMachine.getAllStocks())
-        print(milkTea.getBrand(), myMachine.countBeverage(milkTea.getBrand()))
+        myMachine.setBeverage(milkTea)
+        //print(myMachine.getAllStocks())
+        //print(milkTea.getBrand(), myMachine.countBeverage(milkTea.getBrand()))
     }
 
 }
