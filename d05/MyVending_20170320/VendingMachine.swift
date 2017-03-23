@@ -45,9 +45,7 @@ class VendingMachine {
             stocksDict[beverage.getBrand()] = 1
         }
         
-        if brandPrice[beverage.getBrand()] != nil {
-            
-        } else {
+        if brandPrice[beverage.getBrand()] == nil {
             brandPrice[beverage.getBrand()] = beverage.getPrice()
         }
         

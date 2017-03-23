@@ -84,13 +84,25 @@ class ColdBeverage: Beverage {
     }
 }
 
-class SparklingColdBeverage: ColdBeverage {
+class SparklingColdBeverage: ColdBeverage, NSCoding {
+    var archiving: SparklingColdBeverage
+    
     init() {
         super.init(kindOf: "SPARKLING")
         setedBrand("Coke")
         setedPrice(800)
         setedCompany("Cocacola")
         setedExpiry(Date(timeInterval: 30000, since: Date()))
+        
+    }
+    
+    required init(coder eDcoder: NSCoder) {
+        archiving = eDcoder.decodeObject(forKey: "archiving") as! SparklingColdBeverage
+        
+    }
+    
+    func encode(with aCoder: NSCoder) {
+        aCoder.encode(archiving, forKey: "archiving")
     }
 
 
