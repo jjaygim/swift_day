@@ -8,34 +8,43 @@
 
 import Foundation
 
-class VendingMachine {
+class VendingMachine : NSObject, NSCoding {
 
     private var vcCash: Int  //자판기에 들어간 돈
     private var stocksDict: [String: Int]  //재고(세팅) 딕셔너리
-    private var brandPrice: [String: Int]  //브랜드 별 가격 정리된 딕셔너리
-    private var availableList: [String: Int]  //잔액, 재고 고려하여 구매가능한 딕셔너리
-    private var purchaseList: [String: Int]  //구매리스트 딕셔너리
+    private var brandPrice: [String: Int]  //브랜드 별 가격 정리된 딕셔너리 (얘도 저장을 해야할거 같음)
+    //private var purchaseDict: [String: Int]  //구매리스트 딕셔너리  //잔액, 재고 고려하여 구매가능한 딕셔너리
+    private var purchaseList: [[String: Int]]  //구매리스트 어레이
     
-    init() {
+    override init() {
         vcCash = Int()
         stocksDict = [String:Int]()
         brandPrice = [String: Int]()
-        availableList = [String: Int]()
-        purchaseList = [String: Int]()
+        //purchaseDict = [String: Int]()
+        purchaseList = [[String: Int]]()
     }
     
-    func saveData() {
-        let ud = UserDefaults.standard
-        ud.set(stocksDict, forKey: "name")
-        print("va save: ", stocksDict)
+    required init?(coder aDecoder: NSCoder) {  //압출풀기
+        vcCash = aDecoder.decodeInteger(forKey: "vsCash")
+        stocksDict = aDecoder.decodeObject(forKey: "stocksDict") as! [String : Int]
+        brandPrice = aDecoder.decodeObject(forKey: "brandPrice") as! [String : Int]
+        //purchaseDict = aDecoder.decodeObject(forKey: "availableList") as! [String : Int]
+        purchaseList = aDecoder.decodeObject(forKey: "purchaseList") as! [[String : Int]]
     }
     
-    func loadDate() {
-        let ld = UserDefaults.standard.dictionary(forKey: "name") as? [String: Int]
-        if let a = ld {
-            stocksDict = a
-            print("va load: ", stocksDict)
-        }
+    func encode(with aCoder: NSCoder) {  //압축하기
+        aCoder.encode(vcCash, forKey: "vcCash")
+        aCoder.encode(stocksDict, forKey: "stocksDict")
+        aCoder.encode(brandPrice, forKey: "brandPrice")
+        //aCoder.encode(purchaseDict, forKey: "availableList")
+        aCoder.encode(purchaseList, forKey: "purchaseList")
+    }
+    
+    //유저디폴트에는 클래스 인스턴스를 저장하는 방법이 없다 그래서 아카이빙이 필요함 데이터 형식으로 변환-앤에스코딩을 구현
+    
+    //UserDefaults 데이터 로드해서 프로퍼티에 저장
+    func loadDate2(dict: [String:Int]) {
+        stocksDict = dict
     }
     
     func setBeverage(_ beverage: Beverage) {
@@ -48,9 +57,7 @@ class VendingMachine {
         if brandPrice[beverage.getBrand()] == nil {
             brandPrice[beverage.getBrand()] = beverage.getPrice()
         }
-        
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "reload"), object: nil, userInfo: getAllStocks())
-
     }
     
     func getAllStocks() -> [String:Int] {
@@ -83,37 +90,36 @@ class VendingMachine {
     func buyBeverage(_ beverage: Beverage) -> String {
         // 잔액
         for (key, val) in brandPrice {
+            var purchaseDict = [String: Int]()
             if beverage.getBrand() == key {
                 if vcCash >= val {
-                    vcCash -= val
-                    availableList[beverage.getBrand()] = val
                     if let stock = stocksDict[beverage.getBrand()] {
+                        purchaseDict[beverage.getBrand()] = val
+                        purchaseList.append(purchaseDict)
+                        vcCash -= val
                         stocksDict[beverage.getBrand()] = stock - 1
                     }
                     else {
                         print("재고가 없습니다")
                     }
-                } else {
+                }
+                else {
                     print("잔액이 부족합니다")
                 }
             }
         }
         // 재고관리
-        if stocksDict[beverage.getBrand()] == 0 {  //재고가 0이면
+        if stocksDict[beverage.getBrand()] == 0 {  //재고가 0이면 키삭제??
             stocksDict.removeValue(forKey: beverage.getBrand())
         }
         return "남은 잔액은 \(vcCash)원입니다"
     }
     
-    //    - 실행 이후 구매한 음료 이름과 금액을 사전으로 추상화하고 전체 구매 목
-    //    록을 배열로 리턴하는 함수
-    func getBeverageList() -> [String] {  //다시 purchaseList: [String: Int]
-        var list = [String]()
-        for key in stocksDict.keys {
-            list.append(key)
-        }
-        return list
+    //    - 실행 이후 구매한 음료 이름과 금액을 사전으로 추상화(buyBeverage() - purchaseDict)하고 전체 구매 목록을 배열로 리턴하는 함수
+    func getPurchaseArr() -> [[String: Int]] {  //실행 이후? 유저디폴트 ㅇ (아카이브 할 때는purchaseList를 저장하지 말아야 하나)
+        return purchaseList
     }
+    
     
     
     
@@ -200,6 +206,26 @@ class VendingMachine {
      */
     
     /*
+     
+     
+     
+     /*
+     //UserDefaults 데이터 저장
+     func saveData() {
+     let ud = UserDefaults.standard
+     ud.set(stocksDict, forKey: "name")
+     print("va save: ", stocksDict)
+     }
+     
+     //UserDefaults 데이터 로드
+     func loadDate() {
+     let ld = UserDefaults.standard.dictionary(forKey: "name") as? [String: Int]
+     if let a = ld {
+     stocksDict = a
+     print("va load: ", stocksDict)
+     }
+     }
+     */
      
      
      func add(_ beverage: Beverage) {

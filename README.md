@@ -8,7 +8,12 @@
 20170321: D5 / VendingMachine Class Updated  
           D5 / NotificationCenter (DispatchQueue.main.async)  
           D6 / Protocol, Extension  
-
+20170322: D7 / Draw_UIGraphicsGetCurrentContext()
+20170323: D8 / UIImagePickerControllerDelegate, JSON Serialization  
+20170324: D8 / NSURLSession streamTask(CamServer) 
+          D5 / VendingMachine Class Clear
+20170325: D7 / Constraints PenGesture  
+          D6 / Keyed Archiving(D5>MyVending_20170320)
 
 
 

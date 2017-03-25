@@ -9,7 +9,7 @@
 import UIKit
 
 class ViewController: UIViewController {
-    let myMachine = VendingMachine()
+    var myMachine = VendingMachine()
     
     private let coke = SparklingColdBeverage()
     private let appleJuice = JuiceColdBerverage()
@@ -112,13 +112,26 @@ class ViewController: UIViewController {
     //func getStocks() -> [String: Int] {
       //  return myMachine.getStockDict()
     //}
-    
+    /*
     func saveDataIn(){
         myMachine.saveData()
     }
     
     func loadDataIn(){
         myMachine.loadDate()
+    }
+    */
+
+    func loadDataIn(_ save: [String:Int]){
+        myMachine.loadDate2(dict: save)
+    }
+    
+    func getMachine() -> VendingMachine {
+        return myMachine
+    }
+    
+    func setMachine(machine: VendingMachine) {
+        myMachine = machine
     }
     
 

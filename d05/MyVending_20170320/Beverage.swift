@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Beverage: NSObject {
+class Beverage: Equatable {
     var ice: Bool
     //var kindArr: Array<String>
     var company: String
@@ -84,8 +84,7 @@ class ColdBeverage: Beverage {
     }
 }
 
-class SparklingColdBeverage: ColdBeverage, NSCoding {
-    var archiving: SparklingColdBeverage
+class SparklingColdBeverage: ColdBeverage {
     
     init() {
         super.init(kindOf: "SPARKLING")
@@ -95,16 +94,6 @@ class SparklingColdBeverage: ColdBeverage, NSCoding {
         setedExpiry(Date(timeInterval: 30000, since: Date()))
         
     }
-    
-    required init(coder eDcoder: NSCoder) {
-        archiving = eDcoder.decodeObject(forKey: "archiving") as! SparklingColdBeverage
-        
-    }
-    
-    func encode(with aCoder: NSCoder) {
-        aCoder.encode(archiving, forKey: "archiving")
-    }
-
 
 }
 
