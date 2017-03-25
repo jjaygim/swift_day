@@ -35,14 +35,15 @@
                                     <constraint firstAttribute="height" constant="24" id="V15-UK-m0v"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IuH-qt-aB4">
-                                <rect key="frame" x="0.0" y="244" width="375" height="451"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IuH-qt-aB4">
+                                <rect key="frame" x="0.0" y="246" width="375" height="421"/>
                                 <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="uHS-hk-tIR" secondAttribute="trailing" id="8kF-2n-UyZ"/>
+                            <constraint firstItem="IuH-qt-aB4" firstAttribute="top" secondItem="uHS-hk-tIR" secondAttribute="bottom" id="90m-5E-REx"/>
                             <constraint firstItem="uHS-hk-tIR" firstAttribute="top" secondItem="guI-5J-szr" secondAttribute="bottom" id="IxA-Gr-lGm"/>
                             <constraint firstItem="IuH-qt-aB4" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Jcf-yV-cyc"/>
                             <constraint firstItem="uHS-hk-tIR" firstAttribute="width" secondItem="guI-5J-szr" secondAttribute="width" id="Uea-Hx-YMi"/>
@@ -51,14 +52,15 @@
                             <constraint firstAttribute="bottom" secondItem="IuH-qt-aB4" secondAttribute="bottom" id="gqY-Jz-P4e"/>
                             <constraint firstItem="uHS-hk-tIR" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="iEQ-eS-mWb"/>
                             <constraint firstAttribute="trailing" secondItem="guI-5J-szr" secondAttribute="trailing" id="u5k-q1-I4A"/>
-                            <constraint firstItem="IuH-qt-aB4" firstAttribute="top" secondItem="uHS-hk-tIR" secondAttribute="bottom" constant="-2" id="weI-IB-3ow"/>
                             <constraint firstItem="guI-5J-szr" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="ySy-S3-2AK"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="bottomView" destination="IuH-qt-aB4" id="i77-c9-1uQ"/>
                         <outlet property="splitView" destination="uHS-hk-tIR" id="xwk-AM-GWg"/>
+                        <outlet property="splitViewHeight" destination="V15-UK-m0v" id="rX7-VL-fjC"/>
                         <outlet property="topView" destination="guI-5J-szr" id="nnj-aP-qrV"/>
+                        <outlet property="topViewHeight" destination="kd3-dx-Y3u" id="MT1-ne-hS4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

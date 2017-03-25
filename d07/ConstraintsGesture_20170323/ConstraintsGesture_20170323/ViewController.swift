@@ -14,29 +14,30 @@ class ViewController: UIViewController {
     @IBOutlet weak var splitView: UIView!
     @IBOutlet weak var bottomView: UIView!
     
+    @IBOutlet weak var topViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var splitViewHeight: NSLayoutConstraint!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        let panGestureRecgnizer = UIPanGestureRecognizer(target: self, action: #selector(ViewController.responseToPan))
         
-        let tapRecognizer = UITapGestureRecognizer(target: self,
-                                                   action: #selector(getter: ViewController.splitView))
-        tapRecognizer.numberOfTapsRequired = 1
-        tapRecognizer.numberOfTouchesRequired = 3
-        self.view.addGestureRecognizer(tapRecognizer)
-    
-    func responseToTapGesture(rec : UITapGestureRecognizer) {
-        if (rec.state == .ended) {
-            self.view.backgroundColor = UIColor.black
-        }
-    }
-        
-        // Do any additional setup after loading the view, typically from a nib.
+        self.splitView.addGestureRecognizer(panGestureRecgnizer)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
+    func responseToPan(res: UIPanGestureRecognizer) {
+        topViewHeight.constant = res.location(in: self.view).y - 12
+    }
+ 
+    /*
+    func responseToPan(res: UIPanGestureRecognizer) {
+        splitViewHeight.constant = res.location(in: self.view).y
+    }
+ */
 
 }
 

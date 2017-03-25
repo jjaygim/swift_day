@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F436C1481E8635520044B40F /* ipad-pro.png in Resources */ = {isa = PBXBuildFile; fileRef = F436C1451E8635520044B40F /* ipad-pro.png */; };
+		F436C1491E8635520044B40F /* iphone6s.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F436C1461E8635520044B40F /* iphone6s.jpg */; };
+		F436C14A1E8635520044B40F /* watch.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F436C1471E8635520044B40F /* watch.jpg */; };
 		F48F5A5F1E836D7300706BA8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48F5A5E1E836D7300706BA8 /* AppDelegate.swift */; };
 		F48F5A611E836D7300706BA8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48F5A601E836D7300706BA8 /* ViewController.swift */; };
 		F48F5A641E836D7300706BA8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F48F5A621E836D7300706BA8 /* Main.storyboard */; };
@@ -15,6 +18,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F436C1451E8635520044B40F /* ipad-pro.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ipad-pro.png"; sourceTree = "<group>"; };
+		F436C1461E8635520044B40F /* iphone6s.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = iphone6s.jpg; sourceTree = "<group>"; };
+		F436C1471E8635520044B40F /* watch.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = watch.jpg; sourceTree = "<group>"; };
 		F48F5A5B1E836D7300706BA8 /* ConstraintsGesture_20170323.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ConstraintsGesture_20170323.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F48F5A5E1E836D7300706BA8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F48F5A601E836D7300706BA8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -57,6 +63,9 @@
 				F48F5A5E1E836D7300706BA8 /* AppDelegate.swift */,
 				F48F5A601E836D7300706BA8 /* ViewController.swift */,
 				F48F5A621E836D7300706BA8 /* Main.storyboard */,
+				F436C1451E8635520044B40F /* ipad-pro.png */,
+				F436C1461E8635520044B40F /* iphone6s.jpg */,
+				F436C1471E8635520044B40F /* watch.jpg */,
 				F48F5A651E836D7300706BA8 /* Assets.xcassets */,
 				F48F5A671E836D7300706BA8 /* LaunchScreen.storyboard */,
 				F48F5A6A1E836D7300706BA8 /* Info.plist */,
@@ -124,9 +133,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F436C1491E8635520044B40F /* iphone6s.jpg in Resources */,
 				F48F5A691E836D7300706BA8 /* LaunchScreen.storyboard in Resources */,
 				F48F5A661E836D7300706BA8 /* Assets.xcassets in Resources */,
 				F48F5A641E836D7300706BA8 /* Main.storyboard in Resources */,
+				F436C1481E8635520044B40F /* ipad-pro.png in Resources */,
+				F436C14A1E8635520044B40F /* watch.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -302,6 +314,7 @@
 				F48F5A6F1E836D7300706BA8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
